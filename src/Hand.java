@@ -43,7 +43,7 @@ public class Hand {
                 System.out.println("Place " + (i+1) + ": None");
             }
         }
-        System.out.println("Place 5: Vide");
+        System.out.println("Place 5: None");
     }
 
 
