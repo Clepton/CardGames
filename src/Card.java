@@ -1,5 +1,6 @@
 public class Card {
 
+    public Card getSymbol;
     private int Number;
     private String Suit;
 
@@ -29,5 +30,20 @@ public class Card {
 
     public String getSuit() {
         return Suit;
+    }
+    public String getSymbol(String Suit){
+        
+        switch (Suit){
+            case "CLOVER":
+                return "C";
+            case "HEART":
+                return "H";
+            case "SPIKE":
+                return "S";
+            case "DIAMOND":
+                return "D";
+            default:
+                return "";
+        }
     }
 }

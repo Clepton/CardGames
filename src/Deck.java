@@ -45,7 +45,7 @@ public class Deck {
     public void displayDeck() {
         System.out.println("Jeu de cartes :");
         for (Card card : cards) {
-            System.out.println(card.getNumber() + " of " + card.getSuit());
+            System.out.println(card.getNumber() + card.getSymbol(card.getSuit()));
         }
     }
 }
