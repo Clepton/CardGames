@@ -9,7 +9,7 @@ public class Deck {
     public Deck() {
         this.cards = new ArrayList<Card>();
         // Construire le jeu de cartes, pour chaque nombre de 2 à 14 (inclus)..
-        for (int number = 2; number <= 14; number++) {
+        for (int number = 1; number <= 13; number++) {
             String[] suits = {"TREFLE", "COEUR", "PIQUE", "CARREAU"};
             for (String suit : suits) {
                 String faceCard = verifyName(number); // Obtenir le nom de la carte face

@@ -14,11 +14,9 @@ public class Card {
             case 11:
                 return "Valet";
             case 12:
-                return "Roi";
+                return "Queen";
             case 13:
-                return "Reine";
-            case 14:
-                return "As";
+                return "King";
             default:
 
                 return String.valueOf(Number);
