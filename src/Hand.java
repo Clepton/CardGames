@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class Hand {
@@ -44,4 +45,24 @@ public class Hand {
         }
         System.out.println("Place 5: Vide");
     }
+
+
+    public boolean matchNumber(){
+
+        Card card1 = hand.get(0);
+        Card card4 = hand.get(3);
+
+        return card1.getNumber() == card4.getNumber();
+
+    }
+
+
+    public boolean matchSuit(){
+        Card card1 = hand.get(0);
+        Card card4 = hand.get(3);
+
+        return Objects.equals(card1.getSuit(), card4.getSuit());
+    }
+
+
 }
