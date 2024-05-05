@@ -93,7 +93,7 @@ public class Hand {
             hand.add(0, newCard);
         }
     }
-    public void printHiddenCards() {
+    public void printHiddenCards(Deck deck) {
         if (!HiddenCards.isEmpty()) {
             System.out.println("Hidden Cards:");
             for (int i = 0; i < HiddenCards.size(); i++) {
@@ -101,7 +101,7 @@ public class Hand {
                 System.out.println("Hidden Card n° " + (i+1) + ": " + card.getNumber() + " of " + card.getSuit());
             }
         } else {
-            System.out.println("No cards hidden.");
+            System.out.println("No cards are hidden.");
         }
     }
 }
