@@ -76,28 +76,29 @@ public class Hand {
 
         if (matchSuit()){
 
-            // Stocker la première carte
+        // Stocker la première et dernière carte
             Card firstCard = hand.get(0);
-
-            // Stocker la dernière carte
             Card lastCard = hand.get(3);
 
-            // Retirer les cartes en deuxième et troisième position
+        // Retirer la deuxième et la troisième carte
             hand.remove(1);
             hand.remove(1);
 
-            // Tirer 2 nouvelles cartes et les ajouter à la main
-            for (int i = 0; i < 2; i++) {
-                Card randomCard = getRandomCard(deck.getCards());
-                hand.add(randomCard);
-                deck.getCards().remove(randomCard); // Retirez la carte du jeu
-            }
-
-            // Ajouter la première carte en première position
+        // Ajouter la première carte en première position
             hand.add(0, firstCard);
 
-            // Ajouter la dernière carte en deuxième position
+        // Ajouter la dernière carte en deuxième position
             hand.add(1, lastCard);
+
+            // Tirer 2 nouvelles cartes et les ajouter en troisième et quatrième position
+            Card newCard1 = getRandomCard(deck.getCards());
+            Card newCard2 = getRandomCard(deck.getCards());
+
+            hand.add(2, newCard1);
+            hand.add(3, newCard2);
+
+
+
 
         }
 
