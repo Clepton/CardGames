@@ -11,7 +11,7 @@ public class Main {
             Hand hand = new Hand(deck); // Crée une main de cartes à partir du jeu
             Score score = new Score(s);
 
-        //while (loop==1) {
+            //while (loop==1) {
             // Affiche la main de cartes
             hand.displayHand();
             deck.displayDeck();
@@ -21,6 +21,7 @@ public class Main {
             System.out.println(score.getScore());
 
             hand.discardedCard(deck);
+
 
             hand.displayHand();
             deck.displayDeck();

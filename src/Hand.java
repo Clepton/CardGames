@@ -29,7 +29,7 @@ public class Hand {
     private Card getRandomCard(ArrayList<Card> cards) {
         Random rand = new Random();
         int randomIndex = rand.nextInt(cards.size());
-        return cards.get(randomIndex);
+        return cards.remove(randomIndex); // Retirez et renvoyez la carte aléatoire
     }
 
     // Méthode pour afficher la main de cartes
@@ -66,9 +66,40 @@ public class Hand {
 
     public void discardedCard(Deck deck){
 
+        if (matchNumber()) {
+
             Card card1 = getRandomCard(deck.getCards());
             hand.add(0, card1);
             deck.getCards().remove(card1); // Retirer la carte du jeu
+
+        }
+
+        if (matchSuit()){
+
+            // Stocker la première carte
+            Card firstCard = hand.get(0);
+
+            // Stocker la dernière carte
+            Card lastCard = hand.get(3);
+
+            // Retirer les cartes en deuxième et troisième position
+            hand.remove(1);
+            hand.remove(1);
+
+            // Tirer 2 nouvelles cartes et les ajouter à la main
+            for (int i = 0; i < 2; i++) {
+                Card randomCard = getRandomCard(deck.getCards());
+                hand.add(randomCard);
+                deck.getCards().remove(randomCard); // Retirez la carte du jeu
+            }
+
+            // Ajouter la première carte en première position
+            hand.add(0, firstCard);
+
+            // Ajouter la dernière carte en deuxième position
+            hand.add(1, lastCard);
+
+        }
 
 
     }
