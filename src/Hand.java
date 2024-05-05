@@ -64,5 +64,14 @@ public class Hand {
         return Objects.equals(card1.getSuit(), card4.getSuit());
     }
 
+    public void discardedCard(Deck deck){
+
+            Card card1 = getRandomCard(deck.getCards());
+            hand.add(0, card1);
+            deck.getCards().remove(card1); // Retirer la carte du jeu
+
+
+    }
+
 
 }
