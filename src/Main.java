@@ -19,6 +19,7 @@ public class Main {
         System.out.println(score.getScore());
 
         hand.discardedCard(deck);
+        hand.printHiddenCards();
 
 
         hand.displayHand();
