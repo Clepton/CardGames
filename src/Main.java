@@ -2,36 +2,34 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-
-        int loop=1;
-
         int s = 0;
+        String loop = "O";
 
-        Deck deck = new Deck(); // Crée un jeu de cartes
-        Hand hand = new Hand(deck); // Crée une main de cartes à partir du jeu
+        Deck deck = new Deck(); // Create a deck of cards
+        Hand hand = new Hand(deck); // Create a hand of cards from the deck
         Score score = new Score(s);
 
-        while (loop==1) {
-        // Affiche la main de cartes
-        hand.displayHand();
+        while ("O".equalsIgnoreCase(loop)) {
+            // Display the hand of cards
+            hand.displayHand();
 
-        score.setScore(s);
+            // Update and display the score
+            score.setScore(s);
+            System.out.println(score.getScore());
 
-        System.out.println(score.getScore());
+            // Ask the user if they want to continue playing
             Scanner scanner = new Scanner(System.in);
+            System.out.print("Continue playing? O/N : ");
+            loop = scanner.nextLine();
 
-            // Demander à l'utilisateur d'entrer du texte
-            System.out.print("Continuer a jouer ? O/N : ");
-            String texte = scanner.nextLine();
+            while (!loop.equalsIgnoreCase("O") && !loop.equalsIgnoreCase("N")) {
+                System.out.println("Error: Please enter O or N");
+                loop = scanner.nextLine();
+            }
 
-        hand.discardedCard(deck);
-
-
-        hand.displayHand();
-
-
+            // Perform actions for the next round of the game
+            hand.discardedCard(deck);
+            hand.printHiddenCards(deck); // Print the hidden cards
         }
-
     }
 }
