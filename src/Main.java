@@ -11,10 +11,6 @@ public class Main {
         score.setScore(s);
 
         System.out.println(score.getScore());
-
-
-
-
-
+        
     }
 }
