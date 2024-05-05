@@ -17,8 +17,6 @@ public class Main {
         while ("O".equalsIgnoreCase(loop)) {
 
 
-
-
             // Affiche la main de cartes
             hand.displayHand();
 
@@ -38,6 +36,8 @@ public class Main {
                 System.out.println("Erreur : Veuillez entrer O ou N");
                 loop = scanner.nextLine();
             }
+
+            hand.discardedCard(deck);
 
 
     }
