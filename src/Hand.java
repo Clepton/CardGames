@@ -15,9 +15,6 @@ public class Hand {
             hand.add(randomCard);
             deck.getCards().remove(randomCard); // Retirez la carte du jeu
         }
-
-        // Ajoutez une cinquième place vide dans la main
-        hand.add(null);
     }
 
     // Méthode pour obtenir la main de cartes
@@ -43,8 +40,7 @@ public class Hand {
                 System.out.println("Place " + (i+1) + ": None");
             }
         }
-        System.out.println("Place 5: None");
-    }
+}
 
 
     public boolean matchNumber(){
@@ -76,26 +72,26 @@ public class Hand {
 
         if (matchSuit()){
 
-        // Stocker la première et dernière carte
+            // Stocker la première et dernière carte
             Card firstCard = hand.get(0);
             Card lastCard = hand.get(3);
 
-        // Retirer la deuxième et la troisième carte
+            // Retirer la deuxième et la troisième carte
             hand.remove(1);
             hand.remove(1);
 
-        // Ajouter la première carte en première position
-            hand.add(0, firstCard);
+            // Ajouter la première carte en première position
+            hand.add(2, firstCard);
 
-        // Ajouter la dernière carte en deuxième position
-            hand.add(1, lastCard);
+            // Ajouter la dernière carte en deuxième position
+            hand.add(3, lastCard);
 
             // Tirer 2 nouvelles cartes et les ajouter en troisième et quatrième position
             Card newCard1 = getRandomCard(deck.getCards());
             Card newCard2 = getRandomCard(deck.getCards());
 
-            hand.add(2, newCard1);
-            hand.add(3, newCard2);
+            hand.add(0, newCard1);
+            hand.add(1, newCard2);
 
 
 
