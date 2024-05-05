@@ -3,53 +3,35 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Window window = new Window();
 
-        String card1 = "Cards/9C.png";
-        String card2;
-        String card3;
-        String card4;
+        int loop=1;
 
-
-        int s=0;
-
-        String loop = "O";
+        int s = 0;
 
         Deck deck = new Deck(); // Crée un jeu de cartes
         Hand hand = new Hand(deck); // Crée une main de cartes à partir du jeu
         Score score = new Score(s);
 
+        while (loop==1) {
+        // Affiche la main de cartes
+        hand.displayHand();
 
+        score.setScore(s);
 
-        while ("O".equalsIgnoreCase(loop)) {
-
-
-            // Affiche la main de cartes
-            hand.displayHand();
-
-            score.setScore(s);
-
-            System.out.println(score.getScore());
+        System.out.println(score.getScore());
             Scanner scanner = new Scanner(System.in);
 
-
-
             // Demander à l'utilisateur d'entrer du texte
-            System.out.print("Continuer à jouer ? O/N : ");
-            loop = scanner.nextLine();
+            System.out.print("Continuer a jouer ? O/N : ");
+            String texte = scanner.nextLine();
+
+        hand.discardedCard(deck);
 
 
-            while (!loop.equalsIgnoreCase("O") && !loop.equalsIgnoreCase("N")) {
-                System.out.println("Erreur : Veuillez entrer O ou N");
-                loop = scanner.nextLine();
-            }
-
-            hand.discardedCard(deck);
-
+        hand.displayHand();
 
 
         }
 
     }
-
 }
