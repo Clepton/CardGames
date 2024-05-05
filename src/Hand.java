@@ -34,16 +34,16 @@ public class Hand {
 
     // Méthode pour afficher la main de cartes
     public void displayHand() {
-        System.out.println("Main de cartes :");
+        System.out.println("Cards in Hand :");
         for (int i = 0; i < HAND_SIZE; i++) {
             Card card = hand.get(i);
             if (card != null) {
                 System.out.println("Carte " + (i+1) + ": " + card.getNumber() + " de " + card.getSuit());
             } else {
-                System.out.println("Place " + (i+1) + ": Vide");
+                System.out.println("Place " + (i+1) + ": None");
             }
         }
-        System.out.println("Place 5: Vide");
+        System.out.println("Place 5: None");
     }
 
 
