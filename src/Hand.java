@@ -70,9 +70,14 @@ public class Hand {
 
     public void discardedCard(Deck deck) {
         if (matchNumber()) {
-            Card card1 = getRandomCard(deck.getCards());
-            hand.add(0, card1);
-            deck.getCards().remove(card1); // Remove the card from the deck
+            if (!HiddenCards.isEmpty()) {
+                hand.add(0, HiddenCards.remove(HiddenCards.size() - 1));
+            } else {
+                Card card1 = getRandomCard(deck.getCards());
+                hand.add(0, card1);
+                deck.getCards().remove(card1); // Remove the card from the deck
+            }
+
         } else if (matchSuit()) {
             // Reorder the hand based on the matchSuit condition
             Card firstCard = hand.get(0);
@@ -81,17 +86,24 @@ public class Hand {
             hand.remove(1);
             hand.add(2, firstCard);
             hand.add(3, lastCard);
-            Card newCard1 = getRandomCard(deck.getCards());
-            Card newCard2 = getRandomCard(deck.getCards());
-            hand.add(0, newCard1);
-            hand.add(1, newCard2);
+            if (!HiddenCards.isEmpty()) {
+                Card newCard1 = HiddenCards.remove(HiddenCards.size() - 1);
+                Card newCard2 = HiddenCards.remove(HiddenCards.size() - 1);
+                hand.add(0, newCard1);
+                hand.add(1, newCard2);
+            }
         } else {
-            // If neither matchNumber nor matchSuit, hide the last card behind the third one
-            Card lastCard = hand.remove(3); // Remove the last card from the hand
-            HiddenCards.add(lastCard); // Add the last card to hidden cards
+            // If matchNumber or matchSuit aren't true we hide the last card behind the third one(which mean the 4th)
+            if (hand.size() == HAND_SIZE) {
+                Card lastCard = hand.remove(3); // Remove the last card from the hand
+                HiddenCards.add(lastCard); // we add the last card to hidden ones
+            }
+            // Draw a new card from the deck to replace the discarded one
             Card newCard = getRandomCard(deck.getCards());
             hand.add(0, newCard);
         }
+
+
     }
     public void printHiddenCards(Deck deck) {
         if (!HiddenCards.isEmpty()) {
@@ -103,5 +115,6 @@ public class Hand {
         } else {
             System.out.println("No cards are hidden.");
         }
+        System.out.println("\n\n");
     }
 }
