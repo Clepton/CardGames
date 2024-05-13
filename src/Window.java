@@ -1,7 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.io.File;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Window extends JFrame {
     // Définition des dimensions de la fenêtre
@@ -38,6 +39,14 @@ public class Window extends JFrame {
         // Ajout du panel de jeu et du panel de boutons à la fenêtre
         add(gamePanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
+
+        // Ajout d'un gestionnaire d'événements pour le bouton playButton
+        playButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Réexécutez la boucle principale lorsque le bouton est cliqué
+                // mainLoop();
+            }
+        });
 
         // Afficher la fenêtre
         setVisible(true);

@@ -6,6 +6,7 @@ public class Main {
         // Création de la fenêtre de jeu
         Window window = new Window();
 
+        // Lancer la boucle principale
         int s = 0;
         String loop = "O";
 
