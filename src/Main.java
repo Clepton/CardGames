@@ -1,35 +1,45 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // Création de la fenêtre de jeu
+        Window window = new Window();
+
         int s = 0;
         String loop = "O";
 
-        Deck deck = new Deck(); // Create a deck of cards
-        Hand hand = new Hand(deck); // Create a hand of cards from the deck
+        // Création du deck de cartes
+        Deck deck = new Deck();
+
+        // Création de la main de cartes à partir du deck
+        Hand hand = new Hand(deck);
+
+        // Création d'un objet Score
         Score score = new Score(s);
 
         while ("O".equalsIgnoreCase(loop)) {
-            // Display the hand of cards
-            hand.displayHand();
+            // Affichage de la main de cartes dans la fenêtre
+            window.displayHand(hand.getCards());
 
-            // Update and display the score
+            // Mise à jour et affichage du score
             score.setScore(s);
             System.out.println(score.getScore());
 
-            // Ask the user if they want to continue playing
+            // Demande à l'utilisateur s'il veut continuer à jouer
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Continue playing? O/N : ");
+            System.out.print("Continuer à jouer ? O/N : ");
             loop = scanner.nextLine();
 
+            // Vérification de la réponse de l'utilisateur
             while (!loop.equalsIgnoreCase("O") && !loop.equalsIgnoreCase("N")) {
-                System.out.println("Error: Please enter O or N");
+                System.out.println("Erreur : Veuillez entrer O ou N");
                 loop = scanner.nextLine();
             }
 
-            // Perform actions for the next round of the game
+            // Actions pour le prochain tour de jeu
             hand.discardedCard(deck);
-            hand.printHiddenCards(deck); // Print the hidden cards
+            hand.printHiddenCards(deck); // Afficher les cartes cachées
         }
     }
 }

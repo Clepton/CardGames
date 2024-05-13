@@ -1,47 +1,63 @@
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.ImageIcon;
+import java.util.ArrayList;
+import java.io.File;
 
 public class Window extends JFrame {
+    // Définition des dimensions de la fenêtre
+    private static final int BOARD_WIDTH = 1000;
+    private static final int BOARD_HEIGHT = 800;
+
+    private JPanel gamePanel;
+    private JPanel buttonPanel;
+    private JButton stayButton;
+
+    // Chemin vers le dossier contenant les images des cartes
+    private static final String CARD_IMAGES_PATH = "chemin_vers_le_dossier_des_images/";
 
     public Window() {
         // Appeler le constructeur de la classe parent JFrame avec le titre de la fenêtre
         super("Ma Fenêtre");
 
-        // Création d'un panel pour la main de cartes en haut au centre
-        JPanel topCenterPanel = new JPanel(new GridLayout(1, 4));
-        // Ajout de différentes cartes à partir de différentes images
-        String[] cardImages = {"Cards/10D.png", "Cards/10C.png", "Cards/10H.png", "Cards/10S.png"}; // Remplacez avec le chemin de vos images
-        for (String imagePath : cardImages) {
-            JLabel cardLabel = new JLabel();
-            cardLabel.setIcon(new ImageIcon(imagePath));
-            topCenterPanel.add(cardLabel);
-        }
-
-        // Création d'un panel pour la main de cartes en bas à gauche
-        JPanel bottomLeftPanel = new JPanel(new GridLayout(1, 1));
-        JLabel bottomLeftLabel = new JLabel();
-        bottomLeftLabel.setIcon(new ImageIcon("image5.jpg")); // Remplacez avec le chemin de votre image
-        bottomLeftPanel.add(bottomLeftLabel);
-
-        // Création d'un panel principal pour la fenêtre
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.add(topCenterPanel, BorderLayout.CENTER);
-        mainPanel.add(bottomLeftPanel, BorderLayout.SOUTH);
-
-        // Ajout du panel principal à la fenêtre
-        add(mainPanel);
-
-        // Définition de la taille de la fenêtre
-        setSize(400, 300);
-
-        // Définition du comportement de fermeture de la fenêtre
+        // Création et configuration de la fenêtre
+        setSize(BOARD_WIDTH, BOARD_HEIGHT);
+        setLocationRelativeTo(null); // Centrer la fenêtre sur l'écran
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Centrer la fenêtre sur l'écran
-        setLocationRelativeTo(null);
+        // Initialisation des composants
+        gamePanel = new JPanel();
+        gamePanel.setLayout(new FlowLayout()); // Utiliser un layout de type FlowLayout pour afficher les cartes côte à côte
+        gamePanel.setBackground(new Color(53, 101, 77));
 
-        // Rendre la fenêtre visible
+        buttonPanel = new JPanel();
+        stayButton = new JButton("Stay");
+
+        // Ajout des boutons au panel de boutons
+        buttonPanel.add(stayButton);
+
+        // Ajout du panel de jeu et du panel de boutons à la fenêtre
+        add(gamePanel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+
+        // Afficher la fenêtre
         setVisible(true);
+    }
+
+    // Méthode pour afficher les cartes dans la main
+    public void displayHand(ArrayList<Card> hand) {
+        // Nettoyer le panel de jeu avant d'ajouter de nouveaux éléments
+        gamePanel.removeAll();
+
+        // Charger et afficher les images des cartes dans la main
+        for (Card card : hand) {
+            String imagePath = "Cards/" + card.getNumber() + card.getSuit() + ".png"; // Chemin vers le fichier image de la carte
+            ImageIcon icon = new ImageIcon(imagePath); // Charger l'image de la carte depuis le fichier PNG
+            JLabel cardLabel = new JLabel(icon); // Créer un JLabel avec l'icône de l'image
+            gamePanel.add(cardLabel); // Ajouter le JLabel au panel de jeu
+        }
+
+        // Rafraîchir l'affichage de la fenêtre
+        revalidate();
+        repaint();
     }
 }
