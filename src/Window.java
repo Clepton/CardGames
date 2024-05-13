@@ -1,15 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.io.File;
 
 public class Window extends JFrame {
-
     // Définition des dimensions de la fenêtre
-    private static final int BOARD_WIDTH = 800;
-    private static final int BOARD_HEIGHT = 600;
+    private static final int BOARD_WIDTH = 1000;
+    private static final int BOARD_HEIGHT = 800;
 
     private JPanel gamePanel;
     private JPanel buttonPanel;
-    private JButton playButton;
+    private JButton stayButton;
+
+    // Chemin vers le dossier contenant les images des cartes
+    private static final String CARD_IMAGES_PATH = "chemin_vers_le_dossier_des_images/";
 
     public Window() {
         // Appeler le constructeur de la classe parent JFrame avec le titre de la fenêtre
@@ -18,19 +22,18 @@ public class Window extends JFrame {
         // Création et configuration de la fenêtre
         setSize(BOARD_WIDTH, BOARD_HEIGHT);
         setLocationRelativeTo(null); // Centrer la fenêtre sur l'écran
-        setResizable(false); // Empêcher le redimensionnement de la fenêtre
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Initialisation des composants
         gamePanel = new JPanel();
-        gamePanel.setLayout(new BorderLayout());
+        gamePanel.setLayout(new FlowLayout()); // Utiliser un layout de type FlowLayout pour afficher les cartes côte à côte
         gamePanel.setBackground(new Color(53, 101, 77));
 
         buttonPanel = new JPanel();
-        playButton = new JButton("Play");
+        stayButton = new JButton("Stay");
 
         // Ajout des boutons au panel de boutons
-        buttonPanel.add(playButton);
+        buttonPanel.add(stayButton);
 
         // Ajout du panel de jeu et du panel de boutons à la fenêtre
         add(gamePanel, BorderLayout.CENTER);
@@ -40,8 +43,21 @@ public class Window extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        // Création d'une instance de la classe Window pour afficher la fenêtre
-        SwingUtilities.invokeLater(Window::new);
+    // Méthode pour afficher les cartes dans la main
+    public void displayHand(ArrayList<Card> hand) {
+        // Nettoyer le panel de jeu avant d'ajouter de nouveaux éléments
+        gamePanel.removeAll();
+
+        // Charger et afficher les images des cartes dans la main
+        for (Card card : hand) {
+            String imagePath = "Cards/" + card.getNumber() + card.getSuit() + ".png"; // Chemin vers le fichier image de la carte
+            ImageIcon icon = new ImageIcon(imagePath); // Charger l'image de la carte depuis le fichier PNG
+            JLabel cardLabel = new JLabel(icon); // Créer un JLabel avec l'icône de l'image
+            gamePanel.add(cardLabel); // Ajouter le JLabel au panel de jeu
+        }
+
+        // Rafraîchir l'affichage de la fenêtre
+        revalidate();
+        repaint();
     }
 }
