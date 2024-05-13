@@ -117,4 +117,8 @@ public class Hand {
         }
         System.out.println("\n\n");
     }
+
+    public ArrayList<Card> getCards() {
+        return hand;
+    }
 }
