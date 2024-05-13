@@ -10,7 +10,7 @@ public class Window extends JFrame {
 
     private JPanel gamePanel;
     private JPanel buttonPanel;
-    private JButton stayButton;
+    private JButton playButton;
 
     // Chemin vers le dossier contenant les images des cartes
     private static final String CARD_IMAGES_PATH = "chemin_vers_le_dossier_des_images/";
@@ -30,10 +30,10 @@ public class Window extends JFrame {
         gamePanel.setBackground(new Color(53, 101, 77));
 
         buttonPanel = new JPanel();
-        stayButton = new JButton("Stay");
+        playButton = new JButton("Stay");
 
         // Ajout des boutons au panel de boutons
-        buttonPanel.add(stayButton);
+        buttonPanel.add(playButton);
 
         // Ajout du panel de jeu et du panel de boutons à la fenêtre
         add(gamePanel, BorderLayout.CENTER);
