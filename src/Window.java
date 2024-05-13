@@ -12,6 +12,11 @@ public class Window extends JFrame {
     private JPanel gamePanel;
     private JPanel buttonPanel;
     private JButton playButton;
+    private JLabel scoreLabel; // Étiquette pour afficher le score
+
+    private Deck deck;
+    private Hand hand;
+    private Score score;
 
     // Chemin vers le dossier contenant les images des cartes
     private static final String CARD_IMAGES_PATH = "chemin_vers_le_dossier_des_images/";
@@ -31,20 +36,37 @@ public class Window extends JFrame {
         gamePanel.setBackground(new Color(53, 101, 77));
 
         buttonPanel = new JPanel();
-        playButton = new JButton("Stay");
+        playButton = new JButton("Play");
 
         // Ajout des boutons au panel de boutons
         buttonPanel.add(playButton);
+
+        // Ajout de l'étiquette du score
+        scoreLabel = new JLabel("Score: ");
+        buttonPanel.add(scoreLabel);
 
         // Ajout du panel de jeu et du panel de boutons à la fenêtre
         add(gamePanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
 
+        // Création du deck de cartes, de la main et de l'objet Score
+        deck = new Deck();
+        hand = new Hand(deck);
+        score = new Score(0);
+
         // Ajout d'un gestionnaire d'événements pour le bouton playButton
         playButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Réexécutez la boucle principale lorsque le bouton est cliqué
-                // mainLoop();
+                // Affichage de la main de cartes dans la fenêtre
+                displayHand(hand.getCards());
+
+                // Mise à jour et affichage du score
+                score.setScore(0); // Réinitialiser le score à chaque tour
+                scoreLabel.setText("Score: " + score.getScore());
+
+                // Actions pour le prochain tour de jeu
+                hand.discardedCard(deck);
+                hand.printHiddenCards(deck); // Afficher les cartes cachées
             }
         });
 
@@ -69,4 +91,5 @@ public class Window extends JFrame {
         revalidate();
         repaint();
     }
+
 }

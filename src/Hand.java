@@ -5,7 +5,7 @@ import java.util.Random;
 public class Hand {
     private ArrayList<Card> hand;
     private ArrayList<Card> HiddenCards;
-    private static final int HAND_SIZE = 4;
+    public static final int HAND_SIZE = 4;
 
     public Hand(Deck deck) {
         hand = new ArrayList<Card>();
@@ -59,13 +59,13 @@ public class Hand {
     public boolean matchNumber() {
         Card card1 = hand.get(0);
         Card card4 = hand.get(3);
-        return card1.getNumber() == card4.getNumber();
+        return card1.getNumber().equals(card4.getNumber());
     }
 
     public boolean matchSuit() {
         Card card1 = hand.get(0);
         Card card4 = hand.get(3);
-        return Objects.equals(card1.getSuit(), card4.getSuit());
+        return card1.getSuit().equals(card4.getSuit());
     }
 
     public void discardedCard(Deck deck) {

@@ -25,6 +25,7 @@ public class Main {
 
             // Mise à jour et affichage du score
             score.setScore(s);
+            hand.displayHand();
             System.out.println(score.getScore());
 
             // Demande à l'utilisateur s'il veut continuer à jouer
