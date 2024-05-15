@@ -1,5 +1,7 @@
 
-The goal of the projet is to reproduce a “Réussite” game called One Hand. The rules are the
+**The goal of the projet is to reproduce a “Réussite” game called One Hand. **
+
+The rules are the
 following:
 
 The game simply needs a complete shuFled 52-cards deck. Start by drawing a “hand” (4
