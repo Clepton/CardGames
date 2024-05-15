@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
-//   aaa
 
 public class Hand {
+    //test
     private ArrayList<Card> hand;
     private ArrayList<Card> HiddenCards;
     public static final int HAND_SIZE = 4;
@@ -83,6 +83,7 @@ public class Hand {
             hand.add(0, card1);
             deck.getCards().remove(card1); // Remove the card 1 from the deck
 
+
             Card card2 = getRandomCard(deck.getCards());
             hand.add(1, card2);
             deck.getCards().remove(card2); // Remove the card 2 from the deck
@@ -116,6 +117,8 @@ public class Hand {
             if (hand.size() == HAND_SIZE) {
                 Card lastCard = hand.remove(3); // Remove the last card from the hand
                 HiddenCards.add(lastCard); // we add the last card to hidden ones
+
+
             }
             // Draw a new card from the deck to replace the discarded one
             Card newCard = getRandomCard(deck.getCards());

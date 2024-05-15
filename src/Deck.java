@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Deck {
+    //test
     private ArrayList<Card> deck;
 
     private static final int NB_CARDS = 52;

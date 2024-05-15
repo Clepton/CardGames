@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Window extends JFrame {
+    //test
     // Définition des dimensions de la fenêtre
     private static final int BOARD_WIDTH = 1000;
     private static final int BOARD_HEIGHT = 800;

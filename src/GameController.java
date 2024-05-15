@@ -1,6 +1,8 @@
 import java.util.Scanner;
-
+//test
 public class GameController {
+
+
     private Window window;
     private Deck deck;
     private Hand hand;
@@ -25,6 +27,9 @@ public class GameController {
             System.out.println("Score: " + score.getScore());
             System.out.print("Continuer à jouer ? O/N : ");
             loop = scanner.nextLine();
+
+
+            //version qui permetait de tester le programme avant d'avoir l'interface
             while (!loop.equalsIgnoreCase("O") && !loop.equalsIgnoreCase("N")) {
                 System.out.println("Erreur : Veuillez entrer O ou N");
                 loop = scanner.nextLine();
