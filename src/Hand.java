@@ -70,29 +70,58 @@ public class Hand {
 
     public void discardedCard(Deck deck) {
         if (matchNumber()) {
-            if (!HiddenCards.isEmpty()) {
-                hand.add(0, HiddenCards.remove(HiddenCards.size() - 1));
-            } else {
+
+                hand.remove(0);
+                hand.remove(0);
+                hand.remove(0);
+                hand.remove(0);
+
+
                 Card card1 = getRandomCard(deck.getCards());
                 hand.add(0, card1);
-                deck.getCards().remove(card1); // Remove the card from the deck
-            }
+                deck.getCards().remove(card1); // Remove the card 1 from the deck
+
+                Card card2 = getRandomCard(deck.getCards());
+                hand.add(1, card2);
+                deck.getCards().remove(card2); // Remove the card 2 from the deck
+
+                Card card3 = getRandomCard(deck.getCards());
+                hand.add(2, card3);
+                deck.getCards().remove(card3); // Remove the card 3 from the deck
+
+                Card card4 = getRandomCard(deck.getCards());
+                hand.add(3, card4);
+                deck.getCards().remove(card4); // Remove the card 4 from the deck
 
         } else if (matchSuit()) {
             // Reorder the hand based on the matchSuit condition
             Card firstCard = hand.get(0);
             Card lastCard = hand.get(3);
+
+            // Tirer 2 nouvelles cartes et les ajouter a la première et deuxième place
+            Card newCard1 = getRandomCard(deck.getCards());
+            Card newCard2 = getRandomCard(deck.getCards());
+
             hand.remove(1);
             hand.remove(1);
-            hand.add(2, firstCard);
-            hand.add(3, lastCard);
-            if (!HiddenCards.isEmpty()) {
-                Card newCard1 = HiddenCards.remove(HiddenCards.size() - 1);
-                Card newCard2 = HiddenCards.remove(HiddenCards.size() - 1);
-                hand.add(0, newCard1);
-                hand.add(1, newCard2);
-            }
-        } else {
+
+            hand.add(0, newCard1);  // Ajouter la première nouvelle carte en 1ère place
+            hand.add(1, newCard2);  // Ajouter la deuxième nouvelle carte en 2ème place
+
+
+            //hand.add(0, firstCard);
+            //hand.add(1, lastCard);
+
+
+
+
+
+
+
+
+        }
+
+        else {
             // If matchNumber or matchSuit aren't true we hide the last card behind the third one(which mean the 4th)
             if (hand.size() == HAND_SIZE) {
                 Card lastCard = hand.remove(3); // Remove the last card from the hand
