@@ -1,7 +1,7 @@
 
-<strong>**The goal of the projet is to reproduce a “Réussite” game called One Hand.** </strong>
+<h1>**The goal of the projet is to reproduce a “Réussite” game called One Hand.** </h1>
 
-The rules are the
+<p>The rules are the
 following:
 
 The game simply needs a complete shuFled 52-cards deck. Start by drawing a “hand” (4
@@ -23,4 +23,4 @@ hand and the previous ones hidden behind the fourth one.
 
 The Joker: if you cannot discard cards (no matching suits or numbers between the first
 and last visible cards of your hand) you can get rid of the two cards in the middle of your
-hand. This is allowed only three times per game. The joker score zero points.
+hand. This is allowed only three times per game. The joker score zero points.</p>
