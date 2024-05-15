@@ -12,6 +12,8 @@ public class Window extends JFrame {
     private JPanel gamePanel;
     private JPanel buttonPanel;
     private JButton playButton;
+    private JButton jokerButton;
+
     private JLabel scoreLabel; // Étiquette pour afficher le score
 
     private Deck deck;
@@ -37,9 +39,11 @@ public class Window extends JFrame {
 
         buttonPanel = new JPanel();
         playButton = new JButton("Play");
+        jokerButton = new JButton("Joker");
 
         // Ajout des boutons au panel de boutons
         buttonPanel.add(playButton);
+        buttonPanel.add(jokerButton);
 
         // Ajout de l'étiquette du score
         scoreLabel = new JLabel("Score: ");
