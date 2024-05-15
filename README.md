@@ -1,5 +1,5 @@
 
-<strong>The goal of the projet is to reproduce a “Réussite” game called One Hand. </strong>
+<strong>**The goal of the projet is to reproduce a “Réussite” game called One Hand.** </strong>
 
 The rules are the
 following:
