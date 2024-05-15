@@ -45,15 +45,20 @@ public class Window extends JFrame {
         jokerButton = new JButton("Joker");
         replayButton = new JButton("Replay"); // Ajout du bouton replay
 
+        // Création du deck de cartes, de la main et de l'objet Score
+        deck = new Deck();
+        hand = new Hand(deck);
+        score = new Score();
+
         // Ajout des boutons au panel de boutons
         buttonPanel.add(playButton);
         buttonPanel.add(jokerButton);
         buttonPanel.add(replayButton); // Ajout du bouton replay
 
         // Ajout de l'étiquette du score et joker restant
-        jokerLabel = new JLabel("Joker restant : ");
+        jokerLabel = new JLabel("Joker restant : " + score.getJoker());
         buttonPanel.add(jokerLabel);
-        scoreLabel = new JLabel("Score : ");
+        scoreLabel = new JLabel("Score : " + score.getScore());
         buttonPanel.add(scoreLabel);
 
         // Ajout du panel de jeu et du panel de boutons à la fenêtre
@@ -63,11 +68,6 @@ public class Window extends JFrame {
         // Création du JLabel pour afficher les règles du jeu
         JLabel rulesLabel = new JLabel("Insérez les règles du jeu ici");
         gamePanel.add(rulesLabel); // Ajout du JLabel au panel de jeu
-
-        // Création du deck de cartes, de la main et de l'objet Score
-        deck = new Deck();
-        hand = new Hand(deck);
-        score = new Score();
 
         // Ajout d'un gestionnaire d'événements pour le bouton playButton
         playButton.addActionListener(new ActionListener() {

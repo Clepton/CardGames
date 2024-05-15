@@ -25,11 +25,10 @@ public class Score {
         return score;
     }
 
-public void setJoker() {
+    public void setJoker() {
         nbJoker = nbJoker - 1;
     }
     public int getJoker() {
         return nbJoker;
     }
 }
-
