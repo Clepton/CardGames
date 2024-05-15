@@ -18,15 +18,19 @@ public class Main {
 
         // Création d'un objet Score
         Score score = new Score(s);
+        int points=0;
 
         while ("O".equalsIgnoreCase(loop)) {
+
+
             // Affichage de la main de cartes dans la fenêtre
             window.displayHand(hand.getCards());
 
             // Mise à jour et affichage du score
-            score.setScore(s);
+            //score.setScore(s);
             hand.displayHand();
-            System.out.println(score.getScore());
+            System.out.println(points);
+
 
             // Demande à l'utilisateur s'il veut continuer à jouer
             Scanner scanner = new Scanner(System.in);
@@ -39,9 +43,19 @@ public class Main {
                 loop = scanner.nextLine();
             }
 
+
+
+
             // Actions pour le prochain tour de jeu
             hand.discardedCard(deck);
             hand.printHiddenCards(deck); // Afficher les cartes cachées
+
+            if (hand.matchNumber()){
+                points=points+5;
+            }
+            if(hand.matchSuit()){
+                points=points+2;
+            }
         }
     }
 }
