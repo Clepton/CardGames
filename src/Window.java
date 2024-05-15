@@ -34,11 +34,12 @@ public class Window extends JFrame {
         setSize(BOARD_WIDTH, BOARD_HEIGHT);
         setLocationRelativeTo(null); // Centrer la fenêtre sur l'écran
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
 
         // Initialisation des composants
         gamePanel = new JPanel();
         gamePanel.setLayout(new FlowLayout()); // Utiliser un layout de type FlowLayout pour afficher les cartes côte à côte
-        gamePanel.setBackground(new Color(53, 101, 77));
+        gamePanel.setBackground(new Color(00, 101, 77));
 
         buttonPanel = new JPanel();
         playButton = new JButton("Play");
@@ -110,6 +111,26 @@ public class Window extends JFrame {
             }
         });
 
+        playButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Affichage de la main de cartes dans la fenêtre
+                displayHand(hand.getCards());
+
+                // Mise à jour et affichage du score
+                score.setScore(hand); // Réinitialiser le score à chaque tour
+                scoreLabel.setText("Score: " + score.getScore());
+
+                // Actions pour le prochain tour de jeu
+                hand.discardedCard(deck);
+                hand.printHiddenCards(deck); // Afficher les cartes cachées
+
+                if (deck.size() < 4) {
+                    JOptionPane.showMessageDialog(null, "Attention, il n'y a plus beaucoup de cartes, dès qu'il y en a plus, click sur replay !");
+                }
+            }
+        });
+
+
         // Ajout d'un gestionnaire d'événements pour le bouton replayButton
         replayButton.addActionListener(new ActionListener() {
             @Override
@@ -143,8 +164,9 @@ public class Window extends JFrame {
             gamePanel.add(cardLabel); // Ajouter le JLabel au panel de jeu
         }
 
-        // Ajouter le JLabel des règles en dessous des cartes
+// Ajouter le JLabel des règles en dessous des cartes
         JLabel rulesLabel = new JLabel("Règles du jeu ici zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+        rulesLabel.setForeground(Color.WHITE); // Changer la couleur du texte en blanc
         gamePanel.add(rulesLabel);
 
         // Rafraîchir l'affichage de la fenêtre
