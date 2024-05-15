@@ -109,6 +109,26 @@ public class Window extends JFrame {
             }
         });
 
+        playButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Affichage de la main de cartes dans la fenêtre
+                displayHand(hand.getCards());
+
+                // Mise à jour et affichage du score
+                score.setScore(hand); // Réinitialiser le score à chaque tour
+                scoreLabel.setText("Score: " + score.getScore());
+
+                // Actions pour le prochain tour de jeu
+                hand.discardedCard(deck);
+                hand.printHiddenCards(deck); // Afficher les cartes cachées
+
+                if (deck.size() < 4) {
+                    JOptionPane.showMessageDialog(null, "There are not enough cards in the deck, start the game again!");
+                }
+            }
+        });
+
+
         // Ajout d'un gestionnaire d'événements pour le bouton replayButton
         replayButton.addActionListener(new ActionListener() {
             @Override
