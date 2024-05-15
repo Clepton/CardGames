@@ -1,5 +1,7 @@
 
-<h1>**The goal of the projet is to reproduce a “Réussite” game called One Hand.** </h1>
+<h1> One Hand game </h1>
+
+<h2>The goal of the projet is to reproduce a “Réussite” game</h2>
 
 <p>The rules are the
 following:
