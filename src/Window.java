@@ -33,6 +33,7 @@ public class Window extends JFrame {
         setSize(BOARD_WIDTH, BOARD_HEIGHT);
         setLocationRelativeTo(null); // Centrer la fenêtre sur l'écran
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
 
         // Initialisation des composants
         gamePanel = new JPanel();
@@ -123,7 +124,7 @@ public class Window extends JFrame {
                 hand.printHiddenCards(deck); // Afficher les cartes cachées
 
                 if (deck.size() < 4) {
-                    JOptionPane.showMessageDialog(null, "There are not enough cards in the deck, start the game again!");
+                    JOptionPane.showMessageDialog(null, "Attention, il n'y a plus beaucoup de cartes, dès qu'il y en a plus, click sur replay !");
                 }
             }
         });
