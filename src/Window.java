@@ -13,10 +13,10 @@ public class Window extends JFrame {
     private JPanel buttonPanel;
     private JButton playButton;
     private JButton jokerButton;
+    private JButton replayButton; // Ajout du bouton replay
 
     private JLabel scoreLabel; // Étiquette pour afficher le score
     private JLabel jokerLabel; // Étiquette pour afficher le score
-
 
     private Deck deck;
     private Hand hand;
@@ -42,27 +42,31 @@ public class Window extends JFrame {
         buttonPanel = new JPanel();
         playButton = new JButton("Play");
         jokerButton = new JButton("Joker");
+        replayButton = new JButton("Replay"); // Ajout du bouton replay
 
         // Ajout des boutons au panel de boutons
         buttonPanel.add(playButton);
         buttonPanel.add(jokerButton);
-
-        deck = new Deck();
-        hand = new Hand(deck);
-        score = new Score();
+        buttonPanel.add(replayButton); // Ajout du bouton replay
 
         // Ajout de l'étiquette du score et joker restant
         jokerLabel = new JLabel("Joker restant : ");
         buttonPanel.add(jokerLabel);
-        jokerLabel.setText("Joker restant: " + score.getJoker()); // Initialise l'étiquette avec le nombre initial de jokers
-        scoreLabel = new JLabel("Score: ");
-        scoreLabel.setText("Score : " + score.getScore()); // Initialise l'étiquette avec le nombre initial de jokers
+        scoreLabel = new JLabel("Score : ");
         buttonPanel.add(scoreLabel);
-
 
         // Ajout du panel de jeu et du panel de boutons à la fenêtre
         add(gamePanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
+
+        // Création du JLabel pour afficher les règles du jeu
+        JLabel rulesLabel = new JLabel("Insérez les règles du jeu ici");
+        gamePanel.add(rulesLabel); // Ajout du JLabel au panel de jeu
+
+        // Création du deck de cartes, de la main et de l'objet Score
+        deck = new Deck();
+        hand = new Hand(deck);
+        score = new Score();
 
         // Ajout d'un gestionnaire d'événements pour le bouton playButton
         playButton.addActionListener(new ActionListener() {
@@ -72,7 +76,7 @@ public class Window extends JFrame {
 
                 // Mise à jour et affichage du score
                 score.setScore(hand); // Réinitialiser le score à chaque tour
-                scoreLabel.setText("Score: " + score.getScore());
+                scoreLabel.setText("Score : " + score.getScore());
 
                 // Actions pour le prochain tour de jeu
                 hand.discardedCard(deck);
@@ -80,6 +84,7 @@ public class Window extends JFrame {
             }
         });
 
+        // Ajout d'un gestionnaire d'événements pour le bouton jokerButton
         jokerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -88,21 +93,35 @@ public class Window extends JFrame {
                     // Affichage de la main de cartes dans la fenêtre
                     displayHand(hand.getCards());
 
-                    // Mise à jour et affichage du score
-
                     // Actions pour le prochain tour de jeu
                     hand.ApplyJoker(deck);
                     hand.printHiddenCards(deck); // Afficher les cartes cachées
 
                     score.setJoker();
                     // Mettre à jour l'étiquette affichant le nombre de jokers restants
-                    jokerLabel.setText("Joker restant: " + score.getJoker());
+                    jokerLabel.setText("Joker restant : " + score.getJoker());
 
                     // Ne pas mettre à jour le score lorsque le bouton Joker est cliqué
                 } else {
                     // Afficher un message indiquant que le nombre maximal d'utilisations du joker est atteint
                     JOptionPane.showMessageDialog(null, "Vous avez utilisé tous les jokers disponibles.", "Limite atteinte", JOptionPane.WARNING_MESSAGE);
                 }
+            }
+        });
+
+        // Ajout d'un gestionnaire d'événements pour le bouton replayButton
+        replayButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Réinitialisation du jeu
+                deck = new Deck(); // Créez un nouveau deck
+                hand = new Hand(deck); // Créez une nouvelle main
+                score = new Score(); // Réinitialisez le score
+
+                // Mettez à jour l'interface utilisateur
+                displayHand(hand.getCards()); // Affichez la nouvelle main
+                scoreLabel.setText("Score : " + score.getScore()); // Réinitialisez l'affichage du score
+                jokerLabel.setText("Joker restant : " + score.getJoker()); // Réinitialisez l'affichage des jokers restants
             }
         });
 
@@ -123,9 +142,12 @@ public class Window extends JFrame {
             gamePanel.add(cardLabel); // Ajouter le JLabel au panel de jeu
         }
 
+        // Ajouter le JLabel des règles en dessous des cartes
+        JLabel rulesLabel = new JLabel("Règles du jeu ici zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+        gamePanel.add(rulesLabel);
+
         // Rafraîchir l'affichage de la fenêtre
         revalidate();
         repaint();
     }
-
 }
