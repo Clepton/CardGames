@@ -71,7 +71,7 @@ public class Window extends JFrame {
                 displayHand(hand.getCards());
 
                 // Mise à jour et affichage du score
-                score.setScore(); // Réinitialiser le score à chaque tour
+                score.setScore(hand); // Réinitialiser le score à chaque tour
                 scoreLabel.setText("Score: " + score.getScore());
 
                 // Actions pour le prochain tour de jeu
@@ -87,8 +87,6 @@ public class Window extends JFrame {
                 displayHand(hand.getCards());
 
                 // Mise à jour et affichage du score
-                score.setScore(); // Réinitialiser le score à chaque tour
-                scoreLabel.setText("Score: " + score.getScore());
 
                 // Actions pour le prochain tour de jeu
                 hand.ApplyJoker(deck);

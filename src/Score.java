@@ -1,29 +1,29 @@
-public class Score extends Hand{
-
-    private static final Deck Deck = new Deck();
+public class Score {
     private int score;
-    private int nbJoker = 3;
+    private int nbJoker;
 
     Score() {
-        super(Deck);
-        this.score = score;
-        this.nbJoker = 3;
+        this.score = 0; // Initialiser le score à zéro dans le constructeur
     }
 
-    public void setScore() {
-        if (matchNumber()) {
-            this.score = score + 5;
+    public void setScore(Hand hand) {
+        if (hand.matchNumber()) {
+            this.score += 5; // Ajouter 5 points si les cartes correspondent par numéro
         }
-        if (matchSuit()) {
-            this.score = score + 3;
+        if (hand.matchSuit()) {
+            this.score += 3; // Ajouter 3 points si les cartes correspondent par couleur
         }
+    }
+
+    public void resetScore() {
+        this.score = 0; // Réinitialiser le score à zéro
     }
 
     public int getScore() {
         return score;
     }
 
-    public void setJoker() {
+public void setJoker() {
         nbJoker = nbJoker - 1;
     }
     public int getJoker() {

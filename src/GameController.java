@@ -21,7 +21,7 @@ public class GameController {
 
         while ("O".equalsIgnoreCase(loop)) {
             window.displayHand(hand.getCards());
-            score.setScore();
+            score.setScore(hand);
             System.out.println("Score: " + score.getScore());
             System.out.print("Continuer à jouer ? O/N : ");
             loop = scanner.nextLine();
@@ -35,7 +35,7 @@ public class GameController {
 
     public void playButtonAction() {
         window.displayHand(hand.getCards());
-        score.setScore();
+        score.setScore(hand);
         hand.discardedCard(deck);
     }
 
