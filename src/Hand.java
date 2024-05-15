@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
+//   aaa
+
 public class Hand {
     private ArrayList<Card> hand;
     private ArrayList<Card> HiddenCards;
