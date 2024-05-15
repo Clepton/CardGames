@@ -38,7 +38,7 @@ public class Window extends JFrame {
         // Initialisation des composants
         gamePanel = new JPanel();
         gamePanel.setLayout(new FlowLayout()); // Utiliser un layout de type FlowLayout pour afficher les cartes côte à côte
-        gamePanel.setBackground(new Color(53, 101, 77));
+        gamePanel.setBackground(new Color(00, 101, 77));
 
         buttonPanel = new JPanel();
         playButton = new JButton("Play");
@@ -163,8 +163,9 @@ public class Window extends JFrame {
             gamePanel.add(cardLabel); // Ajouter le JLabel au panel de jeu
         }
 
-        // Ajouter le JLabel des règles en dessous des cartes
+// Ajouter le JLabel des règles en dessous des cartes
         JLabel rulesLabel = new JLabel("Règles du jeu ici zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+        rulesLabel.setForeground(Color.WHITE); // Changer la couleur du texte en blanc
         gamePanel.add(rulesLabel);
 
         // Rafraîchir l'affichage de la fenêtre
