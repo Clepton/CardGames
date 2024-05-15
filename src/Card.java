@@ -1,3 +1,4 @@
+
 public class Card {
     private String Number;
     private String Suit;
@@ -15,4 +16,3 @@ public class Card {
         return Suit;
     }
 }
-

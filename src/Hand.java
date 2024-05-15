@@ -73,27 +73,27 @@ public class Hand {
     public void discardedCard(Deck deck) {
         if (matchNumber()) {
 
-                hand.remove(0);
-                hand.remove(0);
-                hand.remove(0);
-                hand.remove(0);
+            hand.remove(0);
+            hand.remove(0);
+            hand.remove(0);
+            hand.remove(0);
 
 
-                Card card1 = getRandomCard(deck.getCards());
-                hand.add(0, card1);
-                deck.getCards().remove(card1); // Remove the card 1 from the deck
+            Card card1 = getRandomCard(deck.getCards());
+            hand.add(0, card1);
+            deck.getCards().remove(card1); // Remove the card 1 from the deck
 
-                Card card2 = getRandomCard(deck.getCards());
-                hand.add(1, card2);
-                deck.getCards().remove(card2); // Remove the card 2 from the deck
+            Card card2 = getRandomCard(deck.getCards());
+            hand.add(1, card2);
+            deck.getCards().remove(card2); // Remove the card 2 from the deck
 
-                Card card3 = getRandomCard(deck.getCards());
-                hand.add(2, card3);
-                deck.getCards().remove(card3); // Remove the card 3 from the deck
+            Card card3 = getRandomCard(deck.getCards());
+            hand.add(2, card3);
+            deck.getCards().remove(card3); // Remove the card 3 from the deck
 
-                Card card4 = getRandomCard(deck.getCards());
-                hand.add(3, card4);
-                deck.getCards().remove(card4); // Remove the card 4 from the deck
+            Card card4 = getRandomCard(deck.getCards());
+            hand.add(3, card4);
+            deck.getCards().remove(card4); // Remove the card 4 from the deck
 
         } else if (matchSuit()) {
             // Reorder the hand based on the matchSuit condition
