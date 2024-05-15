@@ -47,22 +47,21 @@ public class Window extends JFrame {
         buttonPanel.add(playButton);
         buttonPanel.add(jokerButton);
 
-        // Ajout de l'étiquette du score et joker restant
-        jokerLabel = new JLabel("Joker restant : ");
-        buttonPanel.add(jokerLabel);
-        jokerLabel.setText("Joker restant: ");
-        scoreLabel = new JLabel("Score: ");
-        buttonPanel.add(scoreLabel);
-
-        // Ajout du panel de jeu et du panel de boutons à la fenêtre
-        add(gamePanel, BorderLayout.CENTER);
-        add(buttonPanel, BorderLayout.SOUTH);
-
-        // Création du deck de cartes, de la main et de l'objet Score
         deck = new Deck();
         hand = new Hand(deck);
         score = new Score();
 
+        // Ajout de l'étiquette du score et joker restant
+        jokerLabel = new JLabel("Joker restant : ");
+        buttonPanel.add(jokerLabel);
+        jokerLabel.setText("Joker restant: " + score.getJoker()); // Initialise l'étiquette avec le nombre initial de jokers
+        scoreLabel = new JLabel("Score: ");
+        buttonPanel.add(scoreLabel);
+
+
+        // Ajout du panel de jeu et du panel de boutons à la fenêtre
+        add(gamePanel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
 
         // Ajout d'un gestionnaire d'événements pour le bouton playButton
         playButton.addActionListener(new ActionListener() {
