@@ -38,12 +38,4 @@ public class GameController {
         score.setScore(hand);
         hand.discardedCard(deck);
     }
-
-    public void useJoker() {
-        if (jokerCount > 0) {
-            jokerCount--;
-        } else {
-            System.out.println("Vous avez utilisé tous les jokers disponibles.");
-        }
-    }
 }

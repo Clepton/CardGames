@@ -56,6 +56,7 @@ public class Window extends JFrame {
         buttonPanel.add(jokerLabel);
         jokerLabel.setText("Joker restant: " + score.getJoker()); // Initialise l'étiquette avec le nombre initial de jokers
         scoreLabel = new JLabel("Score: ");
+        scoreLabel.setText("Score : " + score.getScore()); // Initialise l'étiquette avec le nombre initial de jokers
         buttonPanel.add(scoreLabel);
 
 
