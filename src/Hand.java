@@ -109,18 +109,6 @@ public class Hand {
 
             hand.add(0, newCard1);  // Ajouter la première nouvelle carte en 1ère place
             hand.add(1, newCard2);  // Ajouter la deuxième nouvelle carte en 2ème place
-
-
-            //hand.add(0, firstCard);
-            //hand.add(1, lastCard);
-
-
-
-
-
-
-
-
         }
 
         else {
@@ -151,5 +139,20 @@ public class Hand {
 
     public ArrayList<Card> getCards() {
         return hand;
+    }
+
+    public void ApplyJoker(Deck deck) {
+        Card firstCard = hand.get(0);
+        Card lastCard = hand.get(3);
+
+        // Tirer 2 nouvelles cartes et les ajouter a la première et deuxième place
+        Card newCard1 = getRandomCard(deck.getCards());
+        Card newCard2 = getRandomCard(deck.getCards());
+
+        hand.remove(1);
+        hand.remove(1);
+
+        hand.add(0, newCard1);  // Ajouter la première nouvelle carte en 1ère place
+        hand.add(1, newCard2);  // Ajouter la deuxième nouvelle carte en 2ème place
     }
 }

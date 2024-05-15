@@ -15,6 +15,8 @@ public class Window extends JFrame {
     private JButton jokerButton;
 
     private JLabel scoreLabel; // Étiquette pour afficher le score
+    private JLabel jokerLabel; // Étiquette pour afficher le score
+
 
     private Deck deck;
     private Hand hand;
@@ -45,7 +47,10 @@ public class Window extends JFrame {
         buttonPanel.add(playButton);
         buttonPanel.add(jokerButton);
 
-        // Ajout de l'étiquette du score
+        // Ajout de l'étiquette du score et joker restant
+        jokerLabel = new JLabel("Joker restant : ");
+        buttonPanel.add(jokerLabel);
+        jokerLabel.setText("Joker restant: ");
         scoreLabel = new JLabel("Score: ");
         buttonPanel.add(scoreLabel);
 
@@ -57,6 +62,7 @@ public class Window extends JFrame {
         deck = new Deck();
         hand = new Hand(deck);
         score = new Score();
+
 
         // Ajout d'un gestionnaire d'événements pour le bouton playButton
         playButton.addActionListener(new ActionListener() {
@@ -73,6 +79,24 @@ public class Window extends JFrame {
                 hand.printHiddenCards(deck); // Afficher les cartes cachées
             }
         });
+
+        jokerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Affichage de la main de cartes dans la fenêtre
+                displayHand(hand.getCards());
+
+                // Mise à jour et affichage du score
+                score.setScore(); // Réinitialiser le score à chaque tour
+                scoreLabel.setText("Score: " + score.getScore());
+
+                // Actions pour le prochain tour de jeu
+                hand.ApplyJoker(deck);
+                hand.printHiddenCards(deck); // Afficher les cartes cachées
+            }
+        }); {
+
+        }
 
         // Afficher la fenêtre
         setVisible(true);
