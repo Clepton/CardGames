@@ -3,12 +3,12 @@ public class Score extends Hand{
     private static final Deck Deck = new Deck();
     private int score;
 
-    Score(int score) {
+    Score() {
         super(Deck);
         this.score = score;
     }
 
-    public void setScore(int score) {
+    public void setScore() {
         if (matchNumber()) {
             this.score = score + 5;
         }

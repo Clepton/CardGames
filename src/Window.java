@@ -52,7 +52,7 @@ public class Window extends JFrame {
         // Création du deck de cartes, de la main et de l'objet Score
         deck = new Deck();
         hand = new Hand(deck);
-        score = new Score(0);
+        score = new Score();
 
         // Ajout d'un gestionnaire d'événements pour le bouton playButton
         playButton.addActionListener(new ActionListener() {
@@ -61,7 +61,7 @@ public class Window extends JFrame {
                 displayHand(hand.getCards());
 
                 // Mise à jour et affichage du score
-                score.setScore(0); // Réinitialiser le score à chaque tour
+                score.setScore(); // Réinitialiser le score à chaque tour
                 scoreLabel.setText("Score: " + score.getScore());
 
                 // Actions pour le prochain tour de jeu
