@@ -4,6 +4,7 @@ public class Score {
 
     Score() {
         this.score = 0; // Initialiser le score à zéro dans le constructeur
+        this.nbJoker = 3;
     }
 
     public void setScore(Hand hand) {
