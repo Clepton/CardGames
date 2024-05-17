@@ -143,9 +143,6 @@ public class Window extends JFrame {
             gamePanel.add(cardLabel); // Ajouter le JLabel au panel de jeu
         }
 
-        // Ajouter le JLabel des règles en dessous des cartes
-        JLabel rulesLabel = new JLabel("Règles du jeu ici zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
-        gamePanel.add(rulesLabel);
 
         // Rafraîchir l'affichage de la fenêtre
         revalidate();
