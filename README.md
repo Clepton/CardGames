@@ -3,8 +3,6 @@
 
 <h2>The goal of the projet is to reproduce a “Réussite” game</h2>
 
-https://youtu.be/DEfXdWpVlKo
-
 <p>The rules are the
 following:
 
