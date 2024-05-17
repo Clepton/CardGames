@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Random;
+
 
 public class Deck {
     //test
@@ -29,5 +32,10 @@ public class Deck {
         for (Card card : deck) {
             System.out.println(card.getNumber() + card.getSuit());
         }
+    }
+
+
+    public int size() {
+        return deck.size();
     }
 }
